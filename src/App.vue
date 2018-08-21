@@ -125,7 +125,7 @@
             <span>Codepen</span>
           </v-tooltip>
           -->
-          <HelloWorld v-show="isExibirHelloWorld"></HelloWorld>
+          <component :is="componenteInicial"></component>
         </v-layout>
       </v-container>
     </v-content>
@@ -226,8 +226,15 @@ export default {
   created() {
     const minhaAPP = this
   },
+  watch: {
+    isExibirHelloWorld: function(valorAtributoIsExibirHelloWorld) {
+      if(valorAtributoIsExibirHelloWorld == true) {
+        this.componenteInicial = "HelloWorld"
+      }
+    }
+  },
   data: () => ({
-    minhaAPP: null,
+    componenteInicial: "",
     isExibirHelloWorld: false,
     dialog: false,
     drawer: null,
